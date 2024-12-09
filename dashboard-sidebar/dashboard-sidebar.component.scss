@@ -1,0 +1,263 @@
+.sidebar {
+    width: 230px;
+    background-color: #081024;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 2px solid #0B1735;
+    align-items: flex-start;
+}
+
+.sidebar-header h2 {
+    font-family: DM Serif Display;
+    font-size: 23.09px;
+    font-weight: 400;
+    line-height: 27.7px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.section-title {
+    padding: 10px 20px;
+    font-size: 12px;
+    color: #CED6FF;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.menu {
+    padding: 0px 15px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu ul li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    gap: 10px;
+    color: #5E70A4;
+}
+
+.menu ul li:hover,
+.menu ul li.active {
+    background: linear-gradient(90deg, #1364FF 0%, #3408E0 100%);
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+.menu ul li i {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.menu ul li span {
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+}
+
+.latest-agents {
+    text-align: center;
+    padding: 10px;
+    background: #0B1735;
+    margin: 0 20px;
+    border-radius: 10px;
+}
+
+.latest-agents img {
+    width: 60px;
+    height: 60px;
+}
+.latest-agents.call-list {
+    height: 150px;
+    overflow-y: hidden;
+}
+
+.agent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+.agent-list::-webkit-scrollbar {
+    width: 0; 
+    background: transparent;
+}
+
+.agent-list {
+    scrollbar-width: none;
+}
+
+.agent-list {
+    -ms-overflow-style: none; 
+}
+
+.recentCalls {
+    display: flex;
+    align-items: center;
+}
+
+.avatarIcon {
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #152D70;
+    margin-right: 5px;
+}
+
+.nameCall {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Lexend;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15.4px;
+    text-align: left;    
+}
+
+.line-div {
+    width: 100%;
+    border: 1px solid #0B1735;
+    margin-top: 30px;
+}
+
+.settings {
+    padding: 0px 14px;
+}
+
+.settings ul {
+    list-style: none;
+    padding: 0;
+}
+
+.settings ul li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.settings ul li i {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.settings ul li span {
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    color: #5E70A4;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    background: #000001;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 8px;
+    border-radius: 8px;
+}
+
+.user-profile .userimg {
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+}
+
+.dropdownIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.profileDetail span {
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.profileDetail p {
+    font-family: Barlow;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+li.liDashboard:hover .imgIcon,
+li.liDashboard.active .imgIcon {
+    content: url('/assets/public/dashIconH.svg');
+}
+
+li.liAgents:hover .imgIcon,
+li.liAgents.active .imgIcon {
+    content: url('/assets/public/agentIconH.svg');
+}
+
+li.liHistory:hover .imgIcon,
+li.liHistory.active .imgIcon {
+    content: url('/assets/public/CHIconH.svg');
+}
+li.liKnow:hover .imgIcon,
+li.liKnow.active .imgIcon {
+    content: url('/assets/public/CHIconH.svg');
+}
+
+li.liPlans:hover .imgIcon,
+li.liPlans.active .imgIcon {
+    content: url('/assets/public/planIconH.svg');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

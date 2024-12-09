@@ -1,0 +1,498 @@
+<div class="main-page">
+    <!-- <app-dashboard-sidebar></app-dashboard-sidebar> -->
+
+    <!-- Collapsible sidebar start -->
+    <div class="sidebar" [ngStyle]="toggleSideSection ? {'width': '30%'} : {'width': '10%'}">
+        <div class="header">
+            <button class="start-btn"> <img src="assets/public/plusIcon.svg"> <span *ngIf="toggleSideSection"
+                    style="margin-left: 10px;">Start from Scratch</span></button>
+            <img src="assets/public/collapseIcon.svg" (click)="toggleSideSection= !toggleSideSection"
+                style="cursor: pointer;">
+        </div>
+
+        <div class="agents-section">
+            <h3>Your Agents</h3>
+            <div class="agent" *ngFor="let agentList of agentList"
+                [ngStyle]="toggleSideSection ? {} : {'justify-content': 'center'}">
+                <div class="agent-text-section">
+                    <div class="agent-icon">{{agentList.initials}}</div>
+                    <div class="agent-info" *ngIf="toggleSideSection">
+                        <div class="agent-name">{{agentList.name}}</div>
+                        <div class="agent-role">{{agentList.role}}</div>
+                    </div>
+                </div>
+                <img *ngIf="toggleSideSection" src="assets/public/dotsSVG.svg" alt="" style="cursor: pointer;">
+            </div>
+        </div>
+    </div>
+    <!-- Collapsible sidebar end -->
+
+    <div class="main-section">
+        <!-- header start -->
+        <header class="headertop">
+            <div class="title-section">
+                <h1 *ngIf="!editMode; else editableTitle">
+                    {{ title }}
+                </h1>
+                <ng-template #editableTitle>
+                    <h1 contenteditable="true" (blur)="saveTitle($event)" (keydown.enter)="saveTitle($event)"
+                        (keydown.escape)="toggleEdit()">
+                        {{ title }}
+                    </h1>
+                </ng-template>
+                <img src="assets/public/editIcon.svg" style="cursor: pointer;" (click)="toggleEdit()">
+            </div>
+            <div class="id-section">
+                <p class="ptext">{{url}}</p>
+                <img src="assets/public/cpyIcon.svg" style="cursor: pointer;" (click)="copyURL()">
+            </div>
+            <div class="id-section" style="background-color: #F7F7F7;">
+                <p class="ptext">{{phoneNumber}}</p>
+                <img src="assets/public/cpyIcon.svg" style="cursor: pointer;" (click)="copyPhoneNumber()">
+            </div>
+            <div class="buttons-section">
+                <img src="assets/public/topsetting.svg" style="cursor: pointer;">
+                <button class="publish-button" data-toggle="modal" data-target="#confirmModal" (click)="publish()">Publish Agent</button>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <!-- tabs section start -->
+        <div class="tabSections">
+            <h3>Create Ai Agent</h3>
+            <div class="tabSectionHead" role="tablist">
+                <div class="tabSteps active" id="model-tab" data-bs-toggle="tab" data-bs-target="#model" type="button"
+                    role="tab" aria-controls="model" aria-selected="true">
+                    <h6>STEP 1</h6>
+                    <h4>Model Creation</h4>
+                    <p>Create & configure your agent</p>
+                </div>
+                <div class="tabSteps" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
+                    role="tab" aria-controls="settings" aria-selected="false">
+                    <h6>STEP 2</h6>
+                    <h4>Advance setting</h4>
+                    <p>Give more data details to agent</p>
+                </div>
+            </div>
+            <div class="tab-content">
+                <!-- Model creation tab content -->
+                <div class="tab-pane fade show active" id="model" role="tabpanel" aria-labelledby="model-tab">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="agentName" class="form-label">Agent Name</label>
+                                <small class="text-muted d-block">What name will your assistant go by</small>
+                                <input type="text" class="form-control mt-2" id="agentName"
+                                    placeholder="Enter agent name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="knowledgeBased" class="form-label">Knowledge Based</label>
+                                <small class="text-muted d-block">Knowledge base is a bank of files that are accessible
+                                    by your assistants.</small>
+                                <select class="form-select mt-2" id="agentVoice">
+                                    <option selected>Male Professional</option>
+                                    <option>Female Professional</option>
+                                    <option>Male Casual</option>
+                                    <option>Female Casual</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="firstMessage" class="form-label">Instructions or First Message</label>
+                                <small class="text-muted d-block">This can also be a URL to a containerized audio file
+                                    (mp3, wav, etc.).</small>
+                                <input type="text" class="form-control mt-2" id="knowledgeBased"
+                                    placeholder="Hello, this is Mary from Mary’s Dental. How can I assist?">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="agentVoice" class="form-label">Agent Voice</label>
+                                <small class="text-muted d-block">Select what voice your agent will use</small>
+
+                                <!-- <div #waveform></div> -->
+                                <div class="input-group mt-2" id="showSelectOption">
+                                    <select class="form-select" id="agentVoice" *ngIf="!isWaveformVisible">
+                                        <option selected>Male Professional</option>
+                                        <option>Female Professional</option>
+                                        <option>Male Casual</option>
+                                        <option>Female Casual</option>
+                                    </select>
+                                    <img src="assets/public/playDash.svg" style="cursor: pointer;margin-left: 10px;"
+                                        (click)="togglePlayPause()">
+                                </div>
+                                <div class="row" style="margin-top: 8px; padding-left: 4%;" id="showWaveform">
+                                    <div class="col-md-10 waveformCol">
+                                        <div #waveform></div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="assets/public/pause.svg" style="cursor: pointer;margin-left: 10px;"
+                                            (click)="togglePlayPause()">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="firstMessage" class="form-label">System Prompt</label>
+                                <small class="text-muted d-block">The system prompt can be used to configure the
+                                    context, role, personality, instructions and so on for the assistant.</small>
+                                <textarea class="form-control mt-2 text-area" id="firstMessage"
+                                    rows="25">You are a voice assistant for Mary's Dental, a dental office located at 123 North Face Place, Anaheim, California. The hours are 8 AM to 5PM daily, but they are closed on Sundays.
+
+                                    Mary's dental provides dental services to the local Anaheim community. The practicing dentist is Dr. Mary Smith.
+                                    
+                                    You are tasked with answering questions about the business, and booking appointments. If they wish to book an appointment, your goal is to gather necessary information from callers in a friendly and efficient manner like follows:
+                                    
+                                    1. Ask for their full name.
+                                    2. Ask for the purpose of their appointment.
+                                    3. Request their preferred date and time for the appointment.
+                                    4. Confirm all details with the caller, including the date and time of the appointment.
+                                    
+                                    - Be sure to be kind of funny and witty!
+                                    - Keep all your responses short and simple. Use casual language, phrases like "Umm...", "Well...", and "I mean" are preferred.
+                                    - This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Advance setting tab content -->
+                <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    <!-- privacy Section -->
+                    <h4 class="step2H4">Privacy</h4>
+                    <p class="step2P">This section allows you to configure the privacy settings for the assistant.</p>
+                    <div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area">
+                                <img src="assets/public/HIPAAicon.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">HIPAA Compliance</label>
+                                    <p class="step2P">When this is enabled, no logs, recordings, or transcriptions will
+                                        be
+                                        stored.</p>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="hipaaSwitch">
+                                <label class="form-check-label" for="hipaaSwitch"></label>
+                            </div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area">
+                                <img src="assets/public/audioSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Audio Recording</label>
+                                    <p class="step2P">Record the conversation with the assistant.</p>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="audioSwitch">
+                                <label class="form-check-label" for="audioSwitch"></label>
+                            </div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area">
+                                <img src="assets/public/videoSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Video Recording</label>
+                                    <p class="step2P">Enable or disable video recording during a web call. This will
+                                        record
+                                        the video of your user.</p>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="videoSwitch">
+                                <label class="form-check-label" for="videoSwitch"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <!-- Pipeline Configuration Section -->
+                    <h4 class="step2H4">Pipeline Configuration</h4>
+                    <p class="step2P">This section allows you to configure the pipeline settings for the assistant.</p>
+                    <div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/silenceSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Silence Timeout</label>
+                                    <p class="step2P">How long to wait before a call is automatically ended due to
+                                        inactivity.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="30" max="600" step="1" value="30"  [(ngModel)]="silencetimeout" >
+                                <div class="slider-label-container">
+                                    <span>30 Sec</span>
+                                    <span>600 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{silencetimeout}}</span></div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/responseSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Response Delay</label>
+                                    <p class="step2P">The minimum number of seconds the assistant waits after user
+                                        speech
+                                        before it starts speaking.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="0" max="2" step="0.1" value="0.5" [(ngModel)]="responseDelay">
+                                <div class="slider-label-container">
+                                    <span>0 Sec</span>
+                                    <span>2 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{responseDelay}}</span></div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/LLMSvg.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">LLM Request Delay</label>
+                                    <p class="step2P">The minimum number of seconds to wait after punctuation before
+                                        sending
+                                        a request to the LLM.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="0" max="2" step="0.1" value="0.5" [(ngModel)]="LLMRequestDelay">
+                                <div class="slider-label-container">
+                                    <span>0 Sec</span>
+                                    <span>2 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{LLMRequestDelay}}</span></div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/thresholdSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Interruption Threshold</label>
+                                    <p class="step2P">The number of words the user must say before the assistant
+                                        considers
+                                        being interrupted.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="0" max="2" step="0.1" value="0.5" [(ngModel)]="interruptionThreshold">
+                                <div class="slider-label-container">
+                                    <span>0 Sec</span>
+                                    <span>2 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{interruptionThreshold}}</span></div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/maxDurSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Maximum Duration</label>
+                                    <p class="step2P">The maximum number of seconds a call will last.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="10" max="3600" step="1" value="1800" [(ngModel)]="maximumDuration">
+                                <div class="slider-label-container">
+                                    <span>10 Sec</span>
+                                    <span>3600 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{maximumDuration}}</span></div>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <!-- Messaging section -->
+                    <h4 class="step2H4">Messaging</h4>
+                    <p class="step2P">This section allows you to configure the pipeline settings for the assistant.</p>
+                    <br />
+                    <div class="msg-section">
+                        <div class="row mb-3 ">
+                            <div class="col-md-6">
+                                <label for="firstMessage" class="form-label">Voicemail Message</label>
+                                <p class="step2P">This is the message that the assistant will say if the call is
+                                    forwarded to voicemail.</p>
+                                <input type="text" class="form-control mt-2 msg-form"
+                                    placeholder="Hey, Can you please call me back? Thanks!">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="knowledgeBased" class="form-label">End Call Message</label>
+                                <p class="step2P">Messages that the assistant will speak when the user hasn't responded.
+                                </p>
+                                <input type="text" class="form-control mt-2 msg-form" id="knowledgeBased"
+                                    placeholder="GoodBye">
+                            </div>
+                        </div>
+                        <div class="row mb-3 ">
+                            <div class="col-md-12">
+                                <label for="firstMessage" class="form-label">Idle Messages</label>
+                                <p class="step2P">Messages that the assistant will speak when the user hasn't responded.
+                                </p>
+                                <input type="text" class="form-control mt-2 msg-form" id="knowledgeBased"
+                                    placeholder="Hey, Can you please call me back? Thanks!">
+                            </div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/maxIdleSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Max Idle Messages</label>
+                                    <p class="step2P">Maximum number of times idle messages can be spoken during the
+                                        call.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="1" max="10" step="1" value="5"  [(ngModel)]="maxIdleMessages">
+                                <div class="slider-label-container">
+                                    <span>1 Sec</span>
+                                    <span>10 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{maxIdleMessages}}</span></div>
+                        </div>
+                        <div class="toggle-div">
+                            <div class="toggle-label-area step2Toggle">
+                                <img src="assets/public/silenceSVG.svg">
+                                <div class="toggle-text-area">
+                                    <label class="form-label">Idle Timeout</label>
+                                    <p class="step2P">Timeout in seconds before an idle message is spoken.</p>
+                                </div>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" class="range-bar" min="5" max="10" step="1" value="6"  [(ngModel)]="idleTimeout">
+                                <div class="slider-label-container">
+                                    <span>5 Sec</span>
+                                    <span>10 Sec</span>
+                                </div>
+                            </div>
+                            <div class="slider-value" id="sliderValue"><span class="span-slider">{{idleTimeout}}</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- tabs section end -->
+    </div>
+
+
+    <!-- initial modal start -->
+    <div class="modal fade" id="exampleModal" #exampleModal tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">What Would You Like to Do?</h5>
+                    <p class="modal-subTitle">Select any of one</p>
+                </div>
+                <div class="modal-body">
+                    <h5 class="headH5">QuickStart</h5>
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/startSVG.svg">
+                                </div>
+                                <h6 class="modalH">Start from Scratch</h6>
+                                <p class="modalP"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/secondSVG.svg">
+                                </div>
+                                <h6 class="modalH">Inbound Q/A</h6>
+                                <p class="modalP">Inbound call agent example offering comprehensive Smart Home support
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/secondSVG.svg">
+                                </div>
+                                <h6 class="modalH">Inbound Q/A</h6>
+                                <p class="modalP">Inbound call agent example offering comprehensive Smart Home support
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/secondSVG.svg">
+                                </div>
+                                <h6 class="modalH">Inbound Q/A</h6>
+                                <p class="modalP">Inbound call agent example offering comprehensive Smart Home support
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/secondSVG.svg">
+                                </div>
+                                <h6 class="modalH">Inbound Q/A</h6>
+                                <p class="modalP">Inbound call agent example offering comprehensive Smart Home support
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="option-box">
+                                <div class="option-icon mb-2">
+                                    <img src="assets/public/secondSVG.svg">
+                                </div>
+                                <h6 class="modalH">Inbound Q/A</h6>
+                                <p class="modalP">Inbound call agent example offering comprehensive Smart Home support
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <h5 type="button" class="headH5" data-bs-dismiss="modal" style="cursor: pointer;">Skip</h5> -->
+                    <button type="button" class="btn btn-secondary skipBTN" data-bs-dismiss="modal">Skip</button>
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Skip</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- initial modal end -->
+
+    <!-- confirm Modal start -->
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" #confirmationModal tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Do you want to publish the agent?</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <!-- Are you sure you want to delete this item? -->
+                 <div class="button-modal-confirm">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeConfirm('Yes')">Yes</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton" (click)="closeConfirm('No')">No</button>
+                 </div>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton" data-dismiss="modal" aria-label="Close">No</button> -->
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- confirm modal end -->
+</div>

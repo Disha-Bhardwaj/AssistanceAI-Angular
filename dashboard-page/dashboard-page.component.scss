@@ -1,0 +1,573 @@
+.main-page {
+    display: flex;
+}
+
+//sidebar design start
+.sidebar {
+    background-color: #FFFFFF;
+    padding: 10px;
+    box-shadow: 10px 0px 34px 0px #0000001A;
+    z-index: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid#DBDBDB;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    gap: 10px;
+}
+
+.start-btn {
+    background-color: #081024;
+    color: #ffffff;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 112px;
+    cursor: pointer;
+    font-family: Barlow;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 2px;
+}
+
+.menu-btn {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.agents-section h3 {
+    font-family: Lexend;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.4px;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #152D70;
+}
+
+.agent-text-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.agent {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    background: #F1F1F1;
+    padding: 12px 14px 12px 14px;
+    border-radius: 16px;
+    justify-content: space-between;
+}
+.agent:hover{
+    border: 1px solid #094fd3;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+    background-color: #F0F3F9;
+}
+
+.agent-icon {
+    background-color: #152D70;
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15.4px;
+    text-align: center;
+}
+
+.agent-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.agent-name {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15.4px;
+    text-align: left;
+    color: #152D70;
+}
+
+.agent-role {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    text-align: left;
+    color: #333333;
+}
+
+//sidebar design end
+
+// header design start
+.main-section {
+    width: 100%;
+}
+
+.headertop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.title-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.title-section h1 {
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 16.5px;
+    text-align: left;
+    color: #081024;
+    margin-bottom: 0px;
+}
+
+.id-section {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    gap: 10px;
+    border-radius: 10px;
+    width: 20%;
+}
+
+.ptext {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13.2px;
+    text-align: left;
+    color: #152D70;
+    margin-bottom: 0px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-right: 10px;
+}
+
+.copy-button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttons-section {
+    display: flex;
+    align-items: center;
+}
+
+.settings-button {
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.publish-button {
+    background: linear-gradient(90deg, #1364FF 0%, #3408E0 100%);
+    color: #FFFFFF;
+    font-family: Lexend;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 15.4px;
+    text-align: center;
+    padding: 15px 28px 15px 28px;
+    border-radius: 40px;
+    margin-left: 10px;
+    border: none;
+}
+
+// header design end
+
+
+// Tabs section start
+.tabSections {
+    padding: 40px 20px 20px 20px;
+    background: linear-gradient(186.13deg, #D5E3FF -144.62%, #FFFFFF 95.15%);
+}
+
+.tabSectionHead {
+    display: flex;
+    justify-content: space-around;
+    background: #FFFFFF;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.tabSections h3 {
+    text-transform: uppercase;
+    font-family: Lexend;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.4px;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #152D70;
+}
+
+.tabSteps {
+    padding: 15px 20px 15px 20px;
+    gap: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.tabSteps.active {
+    border: 1px solid #0000000D;
+    background: #F7F7F7;
+}
+
+.tabSteps h6 {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 13.2px;
+    text-align: left;
+    color: #152D70;
+}
+
+.tabSteps h4 {
+    font-family: DM Serif Display;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 19.8px;
+    text-align: left;
+    color: #152D70;
+}
+
+.tabSteps p {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13.2px;
+    text-align: left;
+    color: #333333;
+    margin-bottom: 0px;
+}
+
+.tab-content {
+    padding: 30px;
+    gap: 30px;
+    border-radius: 20px;
+    border: 1px solid #0000001A;
+    background: #FFFFFF;
+}
+
+.form-label {
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16.5px;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #152D70;
+}
+
+small {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 13.2px;
+    text-align: left;
+    color: #152D70 !important;
+}
+
+.form-control,
+.form-select {
+    padding: 16px 20px 16px 20px;
+    gap: 10px;
+    border-radius: 20px !important;
+    border: 1px solid #0000001A;
+    background: #F7F7F7;
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 21px;
+    text-align: left;
+    color: #333333;
+}
+
+// Tabs section end
+
+// tabs section content start
+.step2H4 {
+    font-family: Lexend;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 17.6px;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #152D70;
+}
+
+.step2P {
+    font-family: Lexend;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 13.2px;
+    text-align: left;
+    color: #152D70;
+    margin-bottom: 0px;
+}
+
+.toggle-div {
+    padding: 16px 20px 16px 18px;
+    gap: 16px;
+    border-radius: 20px;
+    background: #F7F7F7;
+    border: 1px solid #0000001A;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.toggle-label-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.form-check-input {
+    width: 2em;
+    height: 1em;
+    border-radius: 50px;
+}
+
+.toggle-label-area.step2Toggle {
+    width: 50%;
+    border-right: 1px solid #D9D9D9;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+}
+
+.slider-value {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid #0000001A;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.span-slider {
+    color: #1364FF;
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+}
+
+.slider-label-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-family: Lexend;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14.4px;
+    text-align: left;
+    color: #333333;
+}
+
+.range-bar {
+    width: 100%;
+}
+
+.msg-section {
+    background: #F7F7F7;
+    border: 1px solid #0000001A;
+    padding: 18px;
+    gap: 18px;
+    border-radius: 20px;
+}
+
+input.form-control.mt-2.msg-form {
+    background: #FFFFFF;
+}
+
+textarea::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 70px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #AEAEAE;
+}
+.waveformCol{
+    border: 1px solid rgba(0, 0, 0, 0.1019607843);
+    background: #F7F7F7;
+    padding: 7px 20px 7px 20px;
+    gap: 1.57px;
+    border-radius: 20px;
+}
+// tabs section content end
+
+// modal start
+.modal-header {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0px;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modal-title {
+    font-family: Lexend;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: center;
+    color: #152D70;
+}
+
+p.modal-subTitle {
+    font-family: Lexend;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 18.2px;
+    color: #333333;
+    text-align: center;
+}
+
+.headH5 {
+    font-family: Lexend;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.6px;
+    text-align: left;
+    color: #152D70;
+}
+
+.option-box {
+    padding: 25px 18px 25px 18px;
+    border-radius: 30px;
+    border: 1px solid #0000001A;
+    transition: transform 0.2s ease;
+    min-height: 193px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    z-index: 1
+}
+
+
+.option-box:hover {
+    // border: 1px solid;
+    // border-image: linear-gradient(90deg, #1364FF 0%, #3408E0 100%);
+    // border-image-slice: 1; 
+    transform: scale(1.05);
+    border-radius: 30px;
+    border: 1px solid #094fd3;
+    box-shadow: 10px 0px 34px 0px rgba(0, 0, 0, 0.1);
+}
+
+h6.modalH {
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16.5px;
+    text-align: center;
+    color: #152D70;
+}
+
+p.modalP {
+    font-family: Lexend;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 19.5px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 0px;
+}
+
+.modal-footer {
+    border: none;
+    margin-top: -25px;
+}
+
+.modal-body .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modal-body .col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+button.btn.btn-secondary.skipBTN {
+    background: linear-gradient(90deg, #1364FF 0%, #3408E0 100%);
+    border: none;
+    padding: 10px 20px 10px 20px;
+    gap: 10px;
+    border-radius: 40px;
+    font-family: Lexend;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 14.3px;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+// modal end
+
+#showWaveform {
+    display: none;
+}
+
+
+
